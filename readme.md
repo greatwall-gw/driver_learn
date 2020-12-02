@@ -74,7 +74,7 @@ void cdev_init(struct cdev *cdev, struct file_operations *fops);
 1)待初始化设备
 2)Fops结构
 
-intcdev_add(struct cdev *dev, dev_t num, unsigned int count);
+int cdev_add(struct cdev *dev, dev_t num, unsigned int count);
 1)待添加的设备
 2)设备响应的第一个设备号
 3)响应的设备个数
@@ -100,6 +100,8 @@ int (*release)(struct inode *, struct file *);
 ssize_t (*read)(struct file *file, char __user *user, size_t size, loff_t *offp);
 
 ssize_t (*write)(struct file *fule, const char __user *user, size_t size, loff_t *offp);
+
+#include <linux/uaccess.h>
 
 static inlinelong copy_from_user(void *to, const void __user * from, unsignedlong n);
 
